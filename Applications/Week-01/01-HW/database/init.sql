@@ -1,13 +1,13 @@
 
 
-CREATE TABLE cars (
+CREATE TABLE posts (
     id SERIAL NOT NULL,
-    make character varying NOT NULL,
-    model character varying NOT NULL,
+    username character varying NOT NULL,
+    content character varying NOT NULL,
     created_at timestamp NOT NULL default now(),
     updated_at timestamp NOT NULL default now(),
     is_deleted boolean DEFAULT false NOT NULL
 );
 
-ALTER TABLE ONLY cars ADD CONSTRAINT car_pkey PRIMARY KEY (id);
-ALTER TABLE cars OWNER TO postgres;
+ALTER TABLE ONLY posts ADD CONSTRAINT post_pkey PRIMARY KEY (id);
+ALTER TABLE posts OWNER TO postgres;

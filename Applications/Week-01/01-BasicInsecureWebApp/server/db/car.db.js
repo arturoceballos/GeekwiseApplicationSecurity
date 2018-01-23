@@ -22,6 +22,7 @@ class CarDb {
         Object.keys(data).forEach((key) => {
             params.push(`${key} = '${data[key]}'`);
         });
+        // params.push(`updated_at = ${new Date()}`);
         let query = `UPDATE ${TABLENAME} SET ${params.join()} WHERE is_deleted=false AND id = ${id} RETURNING *`;
         console.log(query);
         return db.one(query);
