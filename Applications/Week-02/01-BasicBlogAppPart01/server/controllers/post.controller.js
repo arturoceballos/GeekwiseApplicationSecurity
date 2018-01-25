@@ -106,7 +106,7 @@ class PostController {
 
     async search(req, res, next) {
         try {
-            const data = await PostDb.search(req.body.search);
+            const data = await PostDb.search(req.body.search, req.body.order);
             if (data) {
                 let posts = data.map(p => { return new Post(p) });
                 return Common.resultOk(res, posts);

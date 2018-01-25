@@ -35,10 +35,10 @@ function searchPosts(e) {
     let list = document.getElementById("post-list");
     list.innerHTML = "";
     let searchVal = $('#search').val();
-    console.log(searchVal)
+    let orderVal = $('#order').val();
     clearEdit();
 
-    jQuery.post(`${_baseUrl}:${_port}/api/post/search`, { search: searchVal }, function(data) {
+    jQuery.post(`${_baseUrl}:${_port}/api/post/search`, { search: searchVal, order: orderVal }, function(data) {
         generatePosts(data);
     });
 }
