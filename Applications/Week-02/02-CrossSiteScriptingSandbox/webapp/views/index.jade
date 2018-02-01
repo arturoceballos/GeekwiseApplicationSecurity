@@ -3,3 +3,13 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  #form
+    label(for="content") Content:
+    textarea(id="content", class="form-control")
+    label(for="attribute") Attribute:
+    input(id="attribute", class="form-control")
+    label(for="css") CSS:
+    input(id="css", class="form-control")
+    label(for="javascript") Javascript:
+    input(id="javascript", class="form-control")
+    button(type="submit", class="btn btn-primary btn-lg") Submit
