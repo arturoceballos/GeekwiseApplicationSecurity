@@ -5,8 +5,8 @@ class Common {
     static resultErr(res, obj) {
         res.status(500).json({ error: obj });
     }
-    static resultNotFound(res) {
-        res.status(404).json({ message: 'Not Found' });
+    static resultNotFound(res, msg) {
+        res.status(404).json({ message: msg ? msg : 'Not Found' });
     }
 }
 

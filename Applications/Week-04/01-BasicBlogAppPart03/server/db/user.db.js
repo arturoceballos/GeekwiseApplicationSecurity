@@ -3,10 +3,10 @@ const db = require('./db');
 const TABLENAME = 'users';
 
 class UserDb {
-    static getUserLogin(username, password) {
-        let query = `SELECT * FROM ${TABLENAME} WHERE username = $1 AND password = $2`;
+    static getUserLogin(email, password) {
+        let query = `SELECT * FROM ${TABLENAME} WHERE email = $1 AND password = $2`;
         console.log(query);
-        return db.oneOrNone(query, [username, password]);
+        return db.oneOrNone(query, [email, password]);
     }
 
 

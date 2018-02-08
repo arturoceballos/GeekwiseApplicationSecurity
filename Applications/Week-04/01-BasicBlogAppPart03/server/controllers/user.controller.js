@@ -15,18 +15,20 @@ class UserController {
             .post(this.insertOne);
         router.route('/user/login')
             .post(this.login);
+        router.route('/user/register')
+            .post(this.register);
     }
 
     async login(req, res, next) {
         try {
-            let username = req.body.username;
+            let email = req.body.email;
             let password = req.body.password;
-            const data = await UserDb.getUserLogin(username, password);
+            const data = await UserDb.getUserLogin(email, password);
             if (data) {
                 let user = new User(data);
                 return Common.resultOk(res, user);
             } else {
-                return Common.resultNotFound(res);
+                return Common.resultNotFound(res, 'Email or password was incorrect');
             }
         } catch (e) {
             // handle error
@@ -35,6 +37,18 @@ class UserController {
             } else {
                 return Common.resultErr(res, e.message);
             }
+        }
+    }
+    
+    async register(req, res, next) {
+        try {
+            let username = req.body.username;
+        } catch (e) {
+          if (e.code == 0) {
+            return Common.resultNotFound(res);
+          } else {
+            return Common.resultErr(res, e.message);
+          }
         }
     }
 
