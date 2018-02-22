@@ -15,7 +15,7 @@ router.post('/login', function(req, res, next) {
 });
 
 router.get('/welcome', function(req, res, next) {
-    res.render('welcome', { name: req.query.name });
+    res.render('welcome', { name: req.cookies.username });
 });
 
 module.exports = router;

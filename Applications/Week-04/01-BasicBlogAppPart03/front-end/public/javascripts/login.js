@@ -9,7 +9,8 @@ MyBlogApp.loginHandler = function(e) {
         console.log(status, data);
         MyBlogApp.spinStop();
         if (status === 200) {
-            document.location.href = '/users/welcome?name=' + data.data.username;
+            setCookie('username', data.data.username, .5);
+            document.location.href = '/users/welcome';
         } else if (status === 404) {
             MyBlogApp.toast('danger', data.message);
         }
@@ -19,4 +20,11 @@ MyBlogApp.loginHandler = function(e) {
 // setup the event handler
 window.onload = function() {
     document.querySelector("form#login-form").addEventListener('submit', MyBlogApp.loginHandler);
+}
+
+setCookie = function (cname, cvalue, exdays) {
+    let d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    let expires = "expires="+ d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
